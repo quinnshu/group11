@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Only 13+ Sign Up</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- css file -->
+	<link rel="stylesheet" href="css/main.css">
+
+	<!-- angular script file -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+
+	<!-- our script file -->
+	<script src="js/order.js"></script>
+
+</head>
+<body class="container">
+	<h1>Sign Up</h1>
+	<h4>Our service is fun and awesome, but you must be 13 years old to join</h4>
+	<hr>
+	<form name="signup" novalidate>
+		<!-- email -->
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="text" class="form-control" id="email" name="email" required autofocus autocomplete>
+		</div>
+
+		<!-- first name -->
+		<div class="form-group">
+			<label for="fname">First Name</label>
+			<input type="text" class="form-control" id="fname" name="fname" required autocomplete>
+		</div>
+
+		<!-- last name -->
+		<div class="form-group">
+			<label for="lname">Last Name</label>
+			<input type="text" class="form-control" id="lname" name="lname" required autocomplete>
+		</div>
+
+		<!-- birthdate -->
+		<div class="form-group">
+			<label for="birthdate">Birthdate</label>
+			<input type="text" class="form-control" id="birthdate" name="birthdate" required autocomplete>
+		</div>
+
+		<!-- password -->
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="text" class="form-control" id="password" name="password" required  autocomplete>
+		</div>
+
+		<!-- confirm password -->
+		<div class="form-group">
+			<label for="confirm">Confirm Password</label>
+			<input type="text" class="form-control" id="confirm" name="confirm" required  autocomplete>
+		</div>
+
+		<!-- reset/sign-me-up buttons -->
+		<div class="form-group">
+			<button type="reset" class="btn btn-default">Reset</button>
+			<button type="submit" class="btn btn-primary" ng-disabled="signup.$invalid">Submit</button>
+		</div>
+	</form>
+</body>
+</html>
