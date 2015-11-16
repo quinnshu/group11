@@ -15,58 +15,68 @@
 	<script src="js/app.js"></script>
 
 	<!-- jquery -->
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+	<!-- moment.js library -->
+	<script src="../../quinngroup/group11/lib/moment.js"></script>
+
 </head>
 <body class="container" ng-app="SignupApp" ng-controller="SignupController">
-	<h1>Sign Up</h1>
-	<h4>Our service is fun and awesome, but you must be 13 years old to join</h4>
-	<hr>
-	<div class="alert alert-success" role="alert">
-		<strong>Well done! </strong>You successfully signed up for this cool 13+ only social network
+<h1>Sign Up</h1>
+<h4>Our service is fun and awesome, but you must be 13 years old to join</h4>
+<hr>
+<div class="alert alert-success" role="alert">
+	<strong>Well done! </strong>You successfully signed up for this cool 13+ only social network
+</div>
+<form name="signup" novalidate>
+	<!-- email -->
+	<div class="form-group">
+		<label for="email">Email</label>
+		<input type="text" class="form-control" id="email" name="email" required autofocus autocomplete>
 	</div>
-	<form name="signup" novalidate>
-		<!-- email -->
-		<div class="form-group">
-			<label for="email">Email</label>
-			<input type="text" class="form-control" id="email" name="email" required autofocus autocomplete>
-		</div>
 
-		<!-- first name -->
-		<div class="form-group">
-			<label for="fname">First Name</label>
-			<input type="text" class="form-control" id="fname" name="fname" autocomplete>
-		</div>
+	<!-- first name -->
+	<div class="form-group">
+		<label for="fname">First Name</label>
+		<input type="text" class="form-control" id="fname" name="fname" autocomplete>
+	</div>
 
-		<!-- last name -->
-		<div class="form-group">
-			<label for="lname">Last Name</label>
-			<input type="text" class="form-control" id="lname" name="lname" required autocomplete>
-		</div>
+	<!-- last name -->
+	<div class="form-group">
+		<label for="lname">Last Name</label>
+		<input type="text" class="form-control" id="lname" name="lname" required autocomplete>
+	</div>
 
-		<!-- birthdate -->
-		<div class="form-group">
-			<label for="birthdate">Birthdate</label>
-			<input type="text" class="form-control" id="birthdate" name="birthdate" older-than13
-				   required autocomplete>
-		</div>
+	<!-- birthdate -->
+	<div class="form-group">
+		<label for="birthdate">Birthdate</label>
+		<input type="date" class="form-control" id="birthdate" name="birthdate" ng-model = "app.birthdate" older-than13
+			   required autocomplete>
+		<p class="validation-error" ng-if="signup.birthdate.$error.required">Birthdate required.</p>
+		<p class="validation-error" ng-if="signup.birthdate.$error.olderThan13">You must be older than 13 to sign up.</p>
+	</div>
 
-		<!-- password -->
-		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" class="form-control" id="password" name="password" required  autocomplete>
-		</div>
+	<!-- password -->
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control" id="password" name="password" data-ng-model = "app.password" required autocomplete>
+	</div>
+	<p class="validation-error" ng-if="signup.password.$error.required">Password required.</p>
 
-		<!-- confirm password -->
-		<div class="form-group">
-			<label for="confirm">Confirm Password</label>
-			<input type="password" class="form-control" id="confirm" name="confirm" required  autocomplete>
-		</div>
+	<!-- confirm password -->
+	<div class="form-group">
+		<label for="confirm">Confirm Password</label>
+		<input type="password" class="form-control" id="confirm" name="confirm" ng-model = "app.confirm" required data-password-verify="app.password" autocomplete>
+	</div>
+	<p class="validation-error" ng-if="signup.confirm.$error.required">Password required.</p>
+	<p class="validation-error" ng-if="signup.confirm.$error.passwordVerify">Passwords must match.</p>
 
-		<!-- reset/sign-me-up buttons -->
-		<div class="form-group">
-			<button type="reset" class="btn btn-default reset">Reset</button>
-			<button type="submit" class="btn btn-primary submit" ng-disabled="signup.$invalid">Submit</button>
-		</div>
-	</form>
+	<span data-ng-show="index.confirm.$error.match">Emails have to match!</span>
+	<!-- reset/sign-me-up buttons -->
+	<div class="form-group">
+		<button type="reset" class="btn btn-default reset">Reset</button>
+		<button type="submit" class="btn btn-primary submit" ng-disabled="signup.$invalid">Submit</button>
+	</div>
+</form>
 </body>
 </html>
