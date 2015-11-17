@@ -17,9 +17,6 @@
 	<!-- jquery -->
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-	<!-- moment.js library -->
-	<script src="../../quinngroup/group11/lib/moment.js"></script>
-
 </head>
 <body class="container" ng-app="SignupApp" ng-controller="SignupController">
 <h1>Sign Up</h1>
@@ -50,10 +47,10 @@
 	<!-- birthdate -->
 	<div class="form-group">
 		<label for="birthdate">Birthdate</label>
-		<input type="date" class="form-control" id="birthdate" name="birthdate" ng-model = "app.birthdate" older-than13
+		<input type="text" class="form-control" id="birthdate" name="birthdate" ng-model = "app.birthdate" older-than13
 			   required autocomplete>
-		<p class="validation-error" ng-if="signup.birthdate.$error.required">Birthdate required.</p>
-		<p class="validation-error" ng-if="signup.birthdate.$error.olderThan13">You must be older than 13 to sign up.</p>
+		<p class="validation-error birthdate-required" ng-if="signup.birthdate.$dirty && signup.birthdate.$error.required">Birthdate required.</p>
+		<p class="validation-error must-be-13" ng-if="signup.birthdate.$dirty && signup.birthdate.$error.olderThan13">You must be older than 13 to sign up.</p>
 	</div>
 
 	<!-- password -->
@@ -61,15 +58,15 @@
 		<label for="password">Password</label>
 		<input type="password" class="form-control" id="password" name="password" data-ng-model = "app.password" required autocomplete>
 	</div>
-	<p class="validation-error" ng-if="signup.password.$error.required">Password required.</p>
+	<p class="validation-error password-required" ng-if="signup.password.$dirty && signup.password.$error.required">Password required.</p>
 
 	<!-- confirm password -->
 	<div class="form-group">
 		<label for="confirm">Confirm Password</label>
 		<input type="password" class="form-control" id="confirm" name="confirm" ng-model = "app.confirm" required data-password-verify="app.password" autocomplete>
 	</div>
-	<p class="validation-error" ng-if="signup.confirm.$error.required">Password required.</p>
-	<p class="validation-error" ng-if="signup.confirm.$error.passwordVerify">Passwords must match.</p>
+	<p class="validation-error password-confirm-required" ng-if="signup.confirm.$dirty && signup.confirm.$error.required">Password required.</p>
+	<p class="validation-error password-match" ng-if="signup.confirm.$dirty && signup.confirm.$error.passwordVerify">Passwords must match.</p>
 
 	<span data-ng-show="index.confirm.$error.match">Emails have to match!</span>
 	<!-- reset/sign-me-up buttons -->

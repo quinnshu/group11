@@ -5,7 +5,8 @@ angular.module('SignupApp', [])
 				require: 'ngModel',
 				link: function (scope, elem, attrs, controller) {
 					controller.$validators.olderThan13 = function (modelValue) {
-						return (moment().diff(moment(modelValue), 'years') > 13);
+						var d = new Date();
+						return ((d - Date.parse(modelValue)) > 410240038000);
 					}
 				}
 			}
